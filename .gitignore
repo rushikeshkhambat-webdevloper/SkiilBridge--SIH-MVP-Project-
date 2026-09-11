@@ -1,0 +1,23 @@
+﻿# Dependencies
+node_modules/
+package-lock.json
+
+# Uploads (in any folder)
+**/uploads/*
+!uploads/.gitkeep
+!backend/uploads/.gitkeep
+
+# Environment
+.env
+backend/.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Frontend should not be in backend
+backend/frontend/

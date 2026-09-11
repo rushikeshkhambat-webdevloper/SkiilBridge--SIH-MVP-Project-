@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillBridge - AI Skill-Market Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">🚀 Skill<span>Bridge</span></div>
+        <ul>
+            <li><a href="#" onclick="showDashboard()">Dashboard</a></li>
+            <li><a href="#" onclick="showJobs()">Jobs</a></li>
+            <li><a href="#" onclick="showMarketScanner()">🔍 Market</a></li>
+            <li>
+                <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Dark</button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="badge">🇮🇳 SMART INDIA HACKATHON 2026</div>
+        <h1>AI-Powered <span class="highlight">Skill-Market Alignment</span></h1>
+        <p>Upload your syllabus and discover what skills are missing to make students job-ready.</p>
+        <div class="gov-tag">🏛️ Government Initiative | SIH 2026</div>
+    </section>
+
+    <div class="container">
+
+        <!-- DASHBOARD -->
+        <div id="dashboard" class="stats-grid">
+            <div class="stat-card"><span class="icon">📊</span><h3>Total Skills</h3><p id="totalSkills">-</p></div>
+            <div class="stat-card"><span class="icon">📈</span><h3>Average Gap</h3><p id="avgGap">-</p></div>
+            <div class="stat-card"><span class="icon">✅</span><h3>Matched Skills</h3><p id="matchedCount">-</p></div>
+            <div class="stat-card"><span class="icon">❌</span><h3>Missing Skills</h3><p id="missingCount">-</p></div>
+        </div>
+
+        <!-- UPLOAD -->
+        <div class="upload-section">
+            <h2>📤 Upload Syllabus</h2>
+            <p class="sub-text">Upload your course syllabus or curriculum to analyze skill gaps</p>
+            <input type="file" id="fileInput" accept=".pdf,.txt,.docx">
+            <div class="btn-group">
+                <button onclick="uploadFile()" class="btn-primary">📤 Upload & Analyze</button>
+            </div>
+            <div id="uploadStatus"></div>
+        </div>
+
+        <!-- RESULTS -->
+        <div id="results" style="display: none;">
+            <h2>📊 Gap Analysis Report</h2>
+            <div class="result-grid">
+                <div class="result-card"><h4>Gap Score</h4><p id="gapScore">-</p></div>
+                <div class="result-card"><h4>✅ Matched Skills</h4><p id="matchedSkills">-</p></div>
+                <div class="result-card"><h4>❌ Missing Skills</h4><p id="missingSkills">-</p></div>
+            </div>
+            <div class="recommendation"><h4>💡 Recommendation</h4><p id="recommendation">-</p></div>
+        </div>
+
+        <!-- QUIZ SECTION -->
+        <div id="quizSection" style="display: none;">
+            <h2>📝 Auto-Generated Quiz</h2>
+            <p>Based on your uploaded syllabus, here are some practice questions:</p>
+            <div id="quizContainer"></div>
+        </div>
+
+        <!-- JOBS -->
+        <div id="jobsSection">
+            <h2>💼 Latest Job Postings</h2>
+            <div id="jobList"></div>
+        </div>
+
+        <!-- MARKET SCANNER -->
+        <div id="marketScanner" style="display: none;">
+            <h2>🔍 AI Job Market Scanner</h2>
+            <p class="sub-text">Real-time skill demand analysis based on live job postings</p>
+            <div class="scanner-filters">
+                <select id="locationFilter" onchange="loadMarketData()">
+                    <option value="Pune">📍 Pune</option>
+                    <option value="Mumbai">📍 Mumbai</option>
+                    <option value="Bangalore">📍 Bangalore</option>
+                    <option value="Hyderabad">📍 Hyderabad</option>
+                    <option value="Delhi">📍 Delhi</option>
+                    <option value="Chennai">📍 Chennai</option>
+                </select>
+                <select id="roleFilter" onchange="loadMarketData()">
+                    <option value="Software Developer">💻 Software Developer</option>
+                    <option value="Data Scientist">📊 Data Scientist</option>
+                    <option value="DevOps Engineer">⚙️ DevOps Engineer</option>
+                    <option value="Full Stack Developer">🌐 Full Stack Developer</option>
+                    <option value="Cloud Engineer">☁️ Cloud Engineer</option>
+                    <option value="AI/ML Engineer">🤖 AI/ML Engineer</option>
+                </select>
+                <button onclick="loadMarketData()" class="btn-primary">🔄 Refresh Data</button>
+            </div>
+
+            <div class="market-stats">
+                <div class="stat-item"><span class="stat-label">📍 Location</span><span class="stat-value" id="marketLocation">Pune</span></div>
+                <div class="stat-item"><span class="stat-label">💼 Role</span><span class="stat-value" id="marketRole">Software Developer</span></div>
+                <div class="stat-item"><span class="stat-label">📊 Total Jobs</span><span class="stat-value" id="totalJobs">547</span></div>
+                <div class="stat-item"><span class="stat-label">🏢 Top Companies</span><span class="stat-value" id="topCompanies">TCS, Infosys, Wipro</span></div>
+            </div>
+
+            <div class="skill-demand-grid" id="skillDemandGrid"></div>
+            <div class="trend-analysis" id="trendAnalysis"></div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-logo">🚀 Skill<span>Bridge</span></div>
+        <div class="links">
+            <a href="#">About</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="gov-badge">🇮🇳 An Initiative for Skill India</div>
+        <p style="margin-top: 10px; font-size: 13px; color: #4a5568;">© 2026 Team Vision Forge | Smart India Hackathon</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
